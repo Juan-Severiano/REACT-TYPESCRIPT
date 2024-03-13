@@ -8,7 +8,6 @@ const FinanceControl = ({ handleSetMovement, balance, expenses }: FinanceControl
   const receiveNewMovement = (movement: Movement) => {
     movement && handleSetMovement(movement)
   }
-  
   return (
     <div>
       {/* BALANCE */}
