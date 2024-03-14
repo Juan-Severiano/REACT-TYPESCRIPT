@@ -1,5 +1,5 @@
-import { ButtonProps } from "../models/interfaces/ButtonProps"
-import './Button.css'
+import { ButtonProps } from "../../interfaces/button-props"
+import './button.css'
 
 const Button = ({ title, priority, action, type, disable }: ButtonProps) => {
   return (

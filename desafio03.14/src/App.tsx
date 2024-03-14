@@ -1,48 +1,33 @@
-import { useState } from 'react'
-import './App.css'
-import FinanceControl from './components/FinanceControls/FinanceControl'
-import Header from './components/Header'
-import { Movement } from './models/interfaces/Movements'
-import Movements from './components/Movements/Movements'
+import { useState } from "react"
+import Header from "./components/header"
+import TaskControl from "./components/task-control"
+import Task from "./interfaces/task"
 
 function App() {
-  const [ currentBalance, setCurrentBalance ] = useState(0) //Saldo atual da conta
-  const [ currentExpenses, setCurrentExpenses ] = useState(0) //despesas atuais da conta
-  const [ movementsItems, setMovementsItems ] = useState<Array<Movement>>([]) //movimentação da conta
+  const [tasks, setTasks] = useState<Array<Task>>([]);
+  // const [doneTasks, setDonetasks] = useState<Array<Task>>([]);
 
-  const setNewMovement = (movement: Movement) => { 
-    if (movement) { 
-      setMovementsItems((prevMovements) => {
-        const movements = [...prevMovements]
-        movements.unshift({
-          name: movement.name,
-          value: movement.value,
-          type: movement.type,
+  const setNewTask = (task: Task) => {
+    if (task) {
+      setTasks((prevTasks) => {
+        const tasks = [...prevTasks]
+        tasks.unshift({
+          ...task,
           id: Math.random().toString(),
         })
-        return movements
+        return tasks
       })
-
-      movement.type === 'Input' && 
-      setCurrentBalance((prevBalance) => prevBalance + Number(movement.value))
-
-      if (movement.type === 'Output') {
-        setCurrentExpenses((prevExpenses) => prevExpenses + Number(movement.value))
-
-        currentBalance > 0 && setCurrentBalance ( (prevBalance) => prevBalance - Number(movement.value) )
-      }
     }
+    console.log(tasks)
   }
 
   return (
     <>
-        <Header />
-        <FinanceControl
-              balance={ currentBalance }
-              expenses={ currentExpenses }
-              handleSetMovement={ setNewMovement }
-        />
-        <Movements movementsList={ movementsItems } />
+      <Header />
+      <TaskControl
+        tasks={tasks}
+        handleSetTask={setNewTask}
+      />
     </>
   )
 }
