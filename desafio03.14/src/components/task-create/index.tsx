@@ -60,9 +60,9 @@ export default function TaskCreate({ currentTasks, emitTask }: TaskCreateProps) 
 
   return (
     <>
-      <div className="balance-container">
-        <div className="balance-card">
-          <header className="balance-header">
+      <div className="task-container">
+        <div className="task-card">
+          <header className="task-header">
             <FontAwesomeIcon icon={faCirclePlus} color="#7af1a7" size="2x" />
             <h2>Criar nova tarefa</h2>
           </header>
@@ -82,21 +82,21 @@ export default function TaskCreate({ currentTasks, emitTask }: TaskCreateProps) 
                 <input
                   type="text"
                   placeholder="Nome"
-                  className="balance-input"
+                  className="task-input"
                   value={inputName}
                   onChange={handleInputNameForm}
                 />
                 <input
                   type="text"
-                  placeholder="Valor"
-                  className="balance-input"
+                  placeholder="Descricao"
+                  className="task-input"
                   value={inputValue}
                   onChange={handleInputValueForm}
                 />
                 <input
                   type="date"
                   placeholder="Data"
-                  className="balance-input"
+                  className="task-input"
                   value={inputDate}
                   onChange={handleInputDateForm}
                 />
