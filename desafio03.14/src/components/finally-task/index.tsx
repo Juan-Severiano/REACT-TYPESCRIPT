@@ -20,7 +20,7 @@ export default function FinallyTask({ currentTasks, finallyTask }: FinallyTasksP
       <div className="task-container">
         <div className="task-card">
           <header className="task-header">
-            <FontAwesomeIcon icon={faDeleteLeft} color="#7af1a7" size="2x" />
+            <FontAwesomeIcon icon={faDeleteLeft} color="#ffd708" size="2x" />
             <h2>Finalizar tarefas</h2>
           </header>
           <h3>{currentTasks.length > 0 ? `Sua última tarefa realizada foi: ${currentTasks[0].name}` : "Encerre suas tarefas"}</h3>

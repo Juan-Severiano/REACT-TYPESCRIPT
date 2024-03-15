@@ -63,7 +63,7 @@ export default function TaskCreate({ currentTasks, emitTask }: TaskCreateProps) 
       <div className="task-container">
         <div className="task-card">
           <header className="task-header">
-            <FontAwesomeIcon icon={faCirclePlus} color="#7af1a7" size="2x" />
+            <FontAwesomeIcon icon={faCirclePlus} color="#ffd708" size="2x" />
             <h2>Criar nova tarefa</h2>
           </header>
           <h3>{currentTasks.length > 0 ? `Sua última tarefa foi: ${currentTasks[0].name}` : "Crie suas novas tarefas"}</h3>

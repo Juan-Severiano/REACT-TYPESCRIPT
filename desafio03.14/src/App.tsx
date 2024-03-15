@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "./components/header"
 import TaskControl from "./components/task-control"
 import Task from "./interfaces/task"
+import Tasks from "./components/tasks";
 
 function App() {
   const [tasks, setTasks] = useState<Array<Task>>([]);
@@ -38,6 +39,7 @@ function App() {
         tasksFinally={doneTasks}
         handleSetTask={setNewTask}
       />
+      <Tasks taskList={tasks} taskDoneList={doneTasks} />
     </>
   )
 }
