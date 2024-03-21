@@ -1,11 +1,13 @@
 import Container from "../../components/container";
 import ImageLogo from '../../assets/logo.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../../components/input";
 
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../services/firebase-connection";
 
 const schema = z.object({
   email: z.string().email("Insira um email válido"),
@@ -16,14 +18,22 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export function Register() {
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
     mode:  'onChange'
   });
 
-  function onSubmit (data: FormData) {
-    console.log('data')
+  async function onSubmit (data: FormData) {
     console.log(data)
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(async user => {
+        await updateProfile(user.user, {
+          displayName: data.name
+        })
+        console.log('Cadastro realizado com sucesso !!!')
+        navigate('/dashboard', { replace: true })
+      })
   }
 
   return (
@@ -35,10 +45,10 @@ export function Register() {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
-          type="email"
-          placeholder="Coloque o email aqui"
-          name="email"
-          error={errors.email?.message}
+          type="text"
+          placeholder="Coloque o name aqui"
+          name="name"
+          error={errors.name?.message}
           register={register}
         />
         <Input
