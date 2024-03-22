@@ -6,8 +6,9 @@ import { Input } from "../../components/input";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../services/firebase-connection";
+import { useEffect } from "react";
 
 const schema = z.object({
   email: z.string().email("Insira um email válido"),
@@ -29,9 +30,17 @@ export function Login() {
       console.log(user)
       console.log('Logado com sucesso')
       navigate('/dashboard', { replace: true })
+
      })
      .catch(error => console.log(error))
   }
+
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth)
+    }
+    handleLogout()
+  }, [])
 
   return (
     <Container>

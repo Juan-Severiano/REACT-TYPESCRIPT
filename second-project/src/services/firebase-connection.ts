@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID
+  apiKey: "AIzaSyD9xchbwJzteZ6yaz5t5aTuJri-jDczEu0",
+  authDomain: "webcarros-67972.firebaseapp.com",
+  projectId: "webcarros-67972",
+  storageBucket: "webcarros-67972.appspot.com",
+  messagingSenderId: "70793292427",
+  appId: "1:70793292427:web:0a7404a4e5756ef889c28e"
 };
 
 const app = initializeApp(firebaseConfig);
